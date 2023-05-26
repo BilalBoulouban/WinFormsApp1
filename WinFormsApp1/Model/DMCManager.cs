@@ -6,44 +6,48 @@ namespace WinFormsApp1.Model
 {
     public static class DMCManager
     {
-        private static List<CampeonatModel> Campeonat = new List<CampeonatModel>();
-        private static string message = "";
-        public static bool CarregarModel(string filePath)
-        {
-            bool bres = false;
-            try
+       
+            private static List<CotxesModel> Campeonat = new List<CotxesModel>();
+
+            public static bool CarregarModel(string filePath)
             {
-                // if (DTDValidator.Validate(filepath))
+                try
                 {
                     XmlDocument doc = new XmlDocument();
                     doc.Load(filePath);
-                    XmlNodeList ElementsCamionat = doc.SelectNodes("//championship");
-                    foreach (XmlNode campionat in ElementsCamionat)
+                    XmlNodeList ElementsCotxes = doc.SelectNodes("//cotxe");
+                    foreach (XmlNode cotxe in ElementsCotxes)
                     {
-                        CampeonatModel Championship = new CampeonatModel();
-                        Championship.Year = int.Parse(campionat.Attributes["Year"].InnerText);
-                        Championship.Country = campionat.Attributes["Country"].Value;
-                        Championship.City = campionat.Attributes["City"].Value;
+                        CotxesModel Championship = new CotxesModel();
+                        Championship.Any = int.Parse(cotxe.Attributes["any"].Value);
+                        Championship.Marca = cotxe.Attributes["marca"].Value;
+                        Championship.Model = cotxe.Attributes["model"].Value;
 
-                        XmlNodeList ElementsDJ = campionat.SelectNodes("//dj");
-                        foreach (XmlNode discjockey in ElementsDJ)
+                        XmlNodeList ElementsCaracteristiques = cotxe.SelectNodes("caracteristica");
+                        foreach (XmlNode caracteristica in ElementsCaracteristiques)
                         {
-                            DJ DJ = new DJ();
-                            DJ.local = discjockey.Attributes["local"].Value;
-                            DJ.nom = discjockey.Attributes["name"].InnerText;
-                            DJ.pos = int.Parse(discjockey.SelectSingleNode("pos").InnerText);
-                            Championship.addDJ(DJ);
+                            string tipus = caracteristica.Attributes["tipus"].Value;
+                            string valor = caracteristica.InnerText;
+                            Championship.Caracteristiques.Add(new CaracteristicaModel { Tipus = tipus, Valor = valor });
                         }
+
                         Campeonat.Add(Championship);
                     }
-                    bres = true;
+
+                    EnviarDades();
+
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Error al cargar el modelo: " + ex.Message);
+                    return false;
                 }
             }
-            catch (Exception ex)
+
+            public static bool EnviarDades()
             {
-                message = ex.Message;
+                return BD.EnviarDatosBDD(Campeonat);
             }
-            return bres;
         }
     }
-}

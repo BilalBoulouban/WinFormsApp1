@@ -11,17 +11,18 @@ namespace WinFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            //carregar el fitxer xml
+            // Cargar el archivo XML
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "File XML (*xml)|*.xml";
+            openFileDialog.Filter = "Archivo XML (*.xml)|*.xml";
+
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                int rowsAffected = BD.EsborrarDades();
                 DMCManager.CarregarModel(openFileDialog.FileName);
+               // BD.getDades();
             }
         }
 

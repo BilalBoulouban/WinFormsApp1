@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cotxes>
+  <cotxe marca="Ford" model="Mustang" any="2019">
+    <caracteristica tipus="motor">V8</caracteristica>
+    <caracteristica tipus="combustible">gasolina</caracteristica>
+    <caracteristica tipus="velocitat-màxima">250 km/h</caracteristica>
+  </cotxe>
+  <cotxe marca="Toyota" model="Camry" any="2022">
+    <caracteristica tipus="motor">4 cilindres</caracteristica>
+    <caracteristica tipus="combustible">gasolina</caracteristica>
+    <caracteristica tipus="consum">7,4 litres/100 km</caracteristica>
+  </cotxe>
+  <cotxe marca="Tesla" model="Model 3" any="2021">
+    <caracteristica tipus="autopilot">sí</caracteristica>
+    <caracteristica tipus="autonomia">448 km</caracteristica>
+    <caracteristica tipus="combustible">elèctric</caracteristica>
+   </cotxe>
+  <cotxe marca="Audi" model="A4" any="2023">
+    <caracteristica tipus="motor">V6</caracteristica>
+    <caracteristica tipus="combustible">diesel</caracteristica>
+    <caracteristica tipus="velocitat-màxima">230 km/h</caracteristica>
+  </cotxe>
+  <cotxe marca="BMW" model="X5" any="2022">
+    <caracteristica tipus="motor">6 cilindres</caracteristica>
+    <caracteristica tipus="combustible">híbrid</caracteristica>
+    <caracteristica tipus="consum">5,5 litres/100 km</caracteristica>
+  </cotxe>
+  <cotxe marca="Mercedes-Benz" model="C-Class" any="2023">
+    <caracteristica tipus="autopilot">no</caracteristica>
+    <caracteristica tipus="autonomia">550 km</caracteristica>
+    <caracteristica tipus="combustible">gasolina</caracteristica>
+  </cotxe>
+  <cotxe marca="Volkswagen" model="Golf" any="2023">
+    <caracteristica tipus="motor">4 cilindres</caracteristica>
+    <caracteristica tipus="combustible">gasolina</caracteristica>
+    <caracteristica tipus="velocitat-màxima">220 km/h</caracteristica>
+  </cotxe>
+  <cotxe marca="Hyundai" model="Tucson" any="2023">
+    <caracteristica tipus="motor">2.0L</caracteristica>
+    <caracteristica tipus="combustible">híbrid</caracteristica>
+    <caracteristica tipus="consum">6,2 litres/100 km</caracteristica>
+  </cotxe>
+   </cotxes>
+

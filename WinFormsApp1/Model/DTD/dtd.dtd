@@ -1,0 +1,13 @@
+<!DOCTYPE cotxes [
+  <!ELEMENT cotxes (cotxe*)>
+  <!ELEMENT cotxe (caracteristica*)>
+  <!ATTLIST cotxe
+    any CDATA #REQUIRED
+    model CDATA #REQUIRED
+    marca CDATA #REQUIRED
+  >
+  <!ELEMENT caracteristica (#PCDATA)>
+  <!ATTLIST caracteristica
+    tipus CDATA #REQUIRED
+  >
+]>

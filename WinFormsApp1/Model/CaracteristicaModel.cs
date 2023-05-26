@@ -5,13 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace WinFormsApp1.Model
-{ }  /*
 {
-    public class DJ
+    public class CaracteristicaModel
     {
-        public String local { get; set; }
-        public String nom { get; set; }
-        public int pos { get; set; }
+        public string Tipus { get; set; }
+        public string Valor { get; set; }
     }
 }
-    */
