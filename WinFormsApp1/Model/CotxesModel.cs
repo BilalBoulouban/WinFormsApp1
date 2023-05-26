@@ -12,7 +12,9 @@ namespace WinFormsApp1.Model
            public string Marca { get; set; }
             public string Model { get; set; }
             public int Any { get; set; }
-            public List<CaracteristicaModel> Caracteristiques { get; set; }
+        public ConcessionariModel Concessionari { get; set; }
+
+        public List<CaracteristicaModel> Caracteristiques { get; set; }
 
             public CotxesModel()
             {
