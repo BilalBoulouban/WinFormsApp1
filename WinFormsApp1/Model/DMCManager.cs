@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
+using System.Xml.Linq;
 using WinFormsApp1.DAO;
 
 namespace WinFormsApp1.Model
@@ -11,25 +11,22 @@ namespace WinFormsApp1.Model
         {
             try
             {
-                XmlDocument doc = new XmlDocument();
-                doc.Load(filePath);
+                XDocument doc = XDocument.Load(filePath);
 
-                XmlNodeList concessionaris = doc.SelectNodes("//concessionari");
-                foreach (XmlNode concessionari in concessionaris)
+                foreach (XElement concessionariElement in doc.Descendants("concessionari"))
                 {
-                    XmlNodeList cotxes = concessionari.SelectNodes("cotxes/cotxe");
-                    foreach (XmlNode cotxeNode in cotxes)
+                    XElement cotxesElement = concessionariElement.Parent.Element("cotxes"); 
+                    foreach (XElement cotxeElement in cotxesElement.Elements("cotxe"))
                     {
                         CotxesModel cotxe = new CotxesModel();
-                        cotxe.Marca = cotxeNode.Attributes["marca"].Value;
-                        cotxe.Model = cotxeNode.Attributes["model"].Value;
-                        cotxe.Any = int.Parse(cotxeNode.Attributes["any"].Value);
+                        cotxe.Marca = cotxeElement.Attribute("marca").Value;
+                        cotxe.Model = cotxeElement.Attribute("model").Value;
+                        cotxe.Any = int.Parse(cotxeElement.Attribute("any").Value);
 
-                        XmlNodeList caracteristiques = cotxeNode.SelectNodes("caracteristica");
-                        foreach (XmlNode caracteristicaNode in caracteristiques)
+                        foreach (XElement caracteristicaElement in cotxeElement.Elements("caracteristica"))
                         {
-                            string tipus = caracteristicaNode.Attributes["tipus"].Value;
-                            string valor = caracteristicaNode.InnerText;
+                            string tipus = caracteristicaElement.Attribute("tipus").Value;
+                            string valor = caracteristicaElement.Value;
                             cotxe.Caracteristiques.Add(new CaracteristicaModel { Tipus = tipus, Valor = valor });
                         }
 
@@ -44,6 +41,11 @@ namespace WinFormsApp1.Model
                 Console.WriteLine("Error al cargar el modelo: " + ex.Message);
                 return false;
             }
+        }
+
+        public static bool EnviarDatosBDD()
+        {
+            return BD.EnviarDatosBDD();
         }
     }
 }
