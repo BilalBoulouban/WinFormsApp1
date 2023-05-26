@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
+using WinFormsApp1.Model;
 
-namespace WinFormsApp1.Model
+namespace WinFormsApp1.DAO
 {
     public static class BD
     {

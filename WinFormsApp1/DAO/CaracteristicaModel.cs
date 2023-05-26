@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsApp1.Model
+namespace WinFormsApp1.DAO
 {
     public class CaracteristicaModel
     {

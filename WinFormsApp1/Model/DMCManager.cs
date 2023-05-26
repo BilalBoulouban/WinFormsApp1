@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Xml;
+using WinFormsApp1.DAO;
 
 namespace WinFormsApp1.Model
 {
