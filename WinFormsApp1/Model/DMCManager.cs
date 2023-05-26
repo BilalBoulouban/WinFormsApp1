@@ -15,7 +15,7 @@ namespace WinFormsApp1.Model
 
                 foreach (XElement concessionariElement in doc.Descendants("concessionari"))
                 {
-                    XElement cotxesElement = concessionariElement.Parent.Element("cotxes"); 
+                    XElement cotxesElement = concessionariElement.Parent.Element("cotxes");
                     foreach (XElement cotxeElement in cotxesElement.Elements("cotxe"))
                     {
                         CotxesModel cotxe = new CotxesModel();
@@ -30,7 +30,19 @@ namespace WinFormsApp1.Model
                             cotxe.Caracteristiques.Add(new CaracteristicaModel { Tipus = tipus, Valor = valor });
                         }
 
-                        BD.InsertarCotxe(cotxe);
+                        int idCotxe = BD.InsertarCotxe(cotxe);
+                        if (idCotxe != -1)
+                        {
+                            foreach (var caracteristica in cotxe.Caracteristiques)
+                            {
+                                BD.InsertarCaracteristica(caracteristica, idCotxe);
+                            }
+
+                            if (cotxe.Concessionari != null)
+                            {
+                                BD.InsertarConcessionari(cotxe.Concessionari);
+                            }
+                        }
                     }
                 }
 
@@ -38,14 +50,8 @@ namespace WinFormsApp1.Model
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al cargar el modelo: " + ex.Message);
                 return false;
             }
-        }
-
-        public static bool EnviarDatosBDD()
-        {
-            return BD.EnviarDatosBDD();
         }
     }
 }
