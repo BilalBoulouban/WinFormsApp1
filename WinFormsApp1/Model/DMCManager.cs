@@ -5,7 +5,7 @@ using WinFormsApp1.DAO;
 
 namespace WinFormsApp1.Model
 {
-    public static class DMCManager
+    public static class MDCManager
     {
         public static bool CarregarModel(string filePath)
         {

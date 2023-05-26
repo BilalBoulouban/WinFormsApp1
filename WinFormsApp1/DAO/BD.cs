@@ -44,7 +44,7 @@ namespace WinFormsApp1.DAO
         {
             try
             {
-                EsborrarDades(); // Borra los datos existentes antes de generar nuevos datos
+                EsborrarDades(); 
 
                 if (Conectar())
                 {
@@ -192,6 +192,7 @@ namespace WinFormsApp1.DAO
                 Console.WriteLine("Error al insertar los datos en las tablas: " + ex.Message);
             }
         }
+
         public static bool InsertarConcessionari(ConcessionariModel concessionari)
         {
             try
