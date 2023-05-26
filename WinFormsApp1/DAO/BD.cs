@@ -116,6 +116,7 @@ namespace WinFormsApp1.DAO
                 Desconectar();
             }
         }
+
         public static int EsborrarDades()
         {
             int rowsAffected = 0;
