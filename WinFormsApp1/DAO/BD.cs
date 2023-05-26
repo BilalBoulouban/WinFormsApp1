@@ -126,7 +126,8 @@ namespace WinFormsApp1.DAO
             }
         }
 
-        public static int InsertarConcessionari(ConcessionariModel concessionari)
+         
+        public static int InsertarConcessionari(ConcessionariModel concessionari )
         {
             int insertedID = -1;
             try
@@ -139,6 +140,7 @@ namespace WinFormsApp1.DAO
 
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
+                  //  command.Parameters.AddWithValue("@id", concessionari.Id);
                     command.Parameters.AddWithValue("@nom", concessionari.Nom);
                     command.Parameters.AddWithValue("@carrer", concessionari.Carrer);
                     command.Parameters.AddWithValue("@ciutat", concessionari.Ciutat);
@@ -173,10 +175,12 @@ namespace WinFormsApp1.DAO
 
             return insertedID;
         }
+    
 
 
 
-        public static int EsborrarDades()
+
+public static int EsborrarDades()
         {
             int rowsAffected = 0;
             try
