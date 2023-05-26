@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concessionaris>
+    <concessionari>
+        <nom>Concessionari XYZ</nom>
+        <adreça>
+            <carrer>Carrer Major, 123</carrer>
+            <ciutat>Barcelona</ciutat>
+            <codiPostal>08001</codiPostal>
+        </adreça>
+        <telefon>123456789</telefon>
+        <horari>
+            <dilluns>9:00 - 18:00</dilluns>
+            <dimarts>9:00 - 18:00</dimarts>
+            <dimecres>9:00 - 18:00</dimecres>
+            <dijous>9:00 - 18:00</dijous>
+            <divendres>9:00 - 18:00</divendres>
+            <dissabte>10:00 - 14:00</dissabte>
+            <diumenge>Tancat</diumenge>
+        </horari>
+    </concessionari>
+    <concessionari>
+        <nom>Concessionari ABC</nom>
+        <adreça>
+            <carrer>Avinguda Principal, 456</carrer>
+            <ciutat>Madrid</ciutat>
+            <codiPostal>28002</codiPostal>
+        </adreça>
+        <telefon>987654321</telefon>
+        <horari>
+            <dilluns>10:00 - 19:00</dilluns>
+            <dimarts>10:00 - 19:00</dimarts>
+            <dimecres>10:00 - 19:00</dimecres>
+            <dijous>10:00 - 19:00</dijous>
+            <divendres>10:00 - 19:00</divendres>
+            <dissabte>11:00 - 15:00</dissabte>
+            <diumenge>Tancat</diumenge>
+        </horari>
+    </concessionari>
+    <concessionari>
+        <nom>Concessionari PQR</nom>
+        <adreça>
+            <carrer>Carrer Secundari, 789</carrer>
+            <ciutat>València</ciutat>
+            <codiPostal>46003</codiPostal>
+        </adreça>
+        <telefon>555555555</telefon>
+        <horari>
+            <dilluns>8:30 - 17:30</dilluns>
+            <dimarts>8:30 - 17:30</dimarts>
+            <dimecres>8:30 - 17:30</dimecres>
+            <dijous>8:30 - 17:30</dijous>
+            <divendres>8:30 - 17:30</divendres>
+            <dissabte>Tancat</dissabte>
+            <diumenge>Tancat</diumenge>
+        </horari>
+    </concessionari>
+    <cotxes>
+        <cotxe any="2019" model="Mustang" marca="Ford">
+            <caracteristica tipus="motor">V8</caracteristica>
+            <caracteristica tipus="combustible">gasolina</caracteristica>
+            <caracteristica tipus="velocitat-màxima">250 km/h</caracteristica>
+        </cotxe>
+        <cotxe any="2022" model="Camry" marca="Toyota">
+            <caracteristica tipus="motor">4 cilindres</caracteristica>
+            <caracteristica tipus="combustible">gasolina</caracteristica>
+            <caracteristica tipus="consum">7,4 litres/100 km</caracteristica>
+        </cotxe>
+        <cotxe any="2021" model="Model 3" marca="Tesla">
+            <caracteristica tipus="autopilot">sí</caracteristica>
+            <caracteristica tipus="autonomia">448 km</caracteristica>
+            <caracteristica tipus="combustible">elèctric</caracteristica>
+        </cotxe>
+        <cotxe any="2023" model="A4" marca="Audi">
+            <caracteristica tipus="motor">V6</caracteristica>
+            <caracteristica tipus="combustible">diesel</caracteristica>
+            <caracteristica tipus="velocitat-màxima">230 km/h</caracteristica>
+        </cotxe>
+        <cotxe any="2022" model="X5" marca="BMW">
+            <caracteristica tipus="motor">6 cilindres</caracteristica>
+            <caracteristica tipus="combustible">híbrid</caracteristica>
+            <caracteristica tipus="consum">5,5 litres/100 km</caracteristica>
+        </cotxe>
+        <cotxe any="2023" model="C-Class" marca="Mercedes-Benz">
+            <caracteristica tipus="autopilot">no</caracteristica>
+            <caracteristica tipus="autonomia">550 km</caracteristica>
+            <caracteristica tipus="combustible">gasolina</caracteristica>
+        </cotxe>
+        <cotxe any="2023" model="Golf" marca="Volkswagen">
+            <caracteristica tipus="motor">4 cilindres</caracteristica>
+            <caracteristica tipus="combustible">gasolina</caracteristica>
+            <caracteristica tipus="velocitat-màxima">220 km/h</caracteristica>
+        </cotxe>
+        <cotxe any="2023" model="Tucson" marca="Hyundai">
+            <caracteristica tipus="motor">2.0L</caracteristica>
+            <caracteristica tipus="combustible">híbrid</caracteristica>
+            <caracteristica tipus="consum">6,2 litres/100 km</caracteristica>
+        </cotxe>
+    </cotxes>
+</concessionaris>

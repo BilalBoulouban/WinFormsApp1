@@ -192,6 +192,53 @@ namespace WinFormsApp1.DAO
                 Console.WriteLine("Error al insertar los datos en las tablas: " + ex.Message);
             }
         }
+        public static bool InsertarConcessionari(ConcessionariModel concessionari)
+        {
+            try
+            {
+                if (Conectar())
+                {
+                    string query = "INSERT INTO concessionaris (nom, carrer, ciutat, codiPostal, telefon, dilluns, dimarts, dimecres, dijous, divendres, dissabte, diumenge) " +
+                        "VALUES (@nom, @carrer, @ciutat, @codiPostal, @telefon, @dilluns, @dimarts, @dimecres, @dijous, @divendres, @dissabte, @diumenge);";
+
+                    using (MySqlCommand command = new MySqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@nom", concessionari.Nom);
+                        command.Parameters.AddWithValue("@carrer", concessionari.Carrer);
+                        command.Parameters.AddWithValue("@ciutat", concessionari.Ciutat);
+                        command.Parameters.AddWithValue("@codiPostal", concessionari.CodiPostal);
+                        command.Parameters.AddWithValue("@telefon", concessionari.Telefon);
+                        command.Parameters.AddWithValue("@dilluns", concessionari.Dilluns);
+                        command.Parameters.AddWithValue("@dimarts", concessionari.Dimarts);
+                        command.Parameters.AddWithValue("@dimecres", concessionari.Dimecres);
+                        command.Parameters.AddWithValue("@dijous", concessionari.Dijous);
+                        command.Parameters.AddWithValue("@divendres", concessionari.Divendres);
+                        command.Parameters.AddWithValue("@dissabte", concessionari.Dissabte);
+                        command.Parameters.AddWithValue("@diumenge", concessionari.Diumenge);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        Console.WriteLine("Registros insertados en concessionaris: " + rowsAffected);
+
+                        Console.WriteLine("Concessionari insertado correctamente.");
+                        return true;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No se puede iniciar la base de datos.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al insertar el concessionari en la tabla concessionaris: " + ex.Message);
+                return false;
+            }
+            finally
+            {
+                Desconectar();
+            }
+        }
 
         public static int EsborrarDades()
         {

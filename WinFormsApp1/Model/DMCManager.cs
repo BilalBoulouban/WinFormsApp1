@@ -7,48 +7,43 @@ namespace WinFormsApp1.Model
 {
     public static class DMCManager
     {
-       
-            private static List<CotxesModel> Campeonat = new List<CotxesModel>();
-
-            public static bool CarregarModel(string filePath)
+        public static bool CarregarModel(string filePath)
+        {
+            try
             {
-                try
-                {
-                    XmlDocument doc = new XmlDocument();
-                    doc.Load(filePath);
-                    XmlNodeList ElementsCotxes = doc.SelectNodes("//cotxe");
-                    foreach (XmlNode cotxe in ElementsCotxes)
-                    {
-                        CotxesModel Championship = new CotxesModel();
-                        Championship.Any = int.Parse(cotxe.Attributes["any"].Value);
-                        Championship.Marca = cotxe.Attributes["marca"].Value;
-                        Championship.Model = cotxe.Attributes["model"].Value;
+                XmlDocument doc = new XmlDocument();
+                doc.Load(filePath);
 
-                        XmlNodeList ElementsCaracteristiques = cotxe.SelectNodes("caracteristica");
-                        foreach (XmlNode caracteristica in ElementsCaracteristiques)
+                XmlNodeList concessionaris = doc.SelectNodes("//concessionari");
+                foreach (XmlNode concessionari in concessionaris)
+                {
+                    XmlNodeList cotxes = concessionari.SelectNodes("cotxes/cotxe");
+                    foreach (XmlNode cotxeNode in cotxes)
+                    {
+                        CotxesModel cotxe = new CotxesModel();
+                        cotxe.Marca = cotxeNode.Attributes["marca"].Value;
+                        cotxe.Model = cotxeNode.Attributes["model"].Value;
+                        cotxe.Any = int.Parse(cotxeNode.Attributes["any"].Value);
+
+                        XmlNodeList caracteristiques = cotxeNode.SelectNodes("caracteristica");
+                        foreach (XmlNode caracteristicaNode in caracteristiques)
                         {
-                            string tipus = caracteristica.Attributes["tipus"].Value;
-                            string valor = caracteristica.InnerText;
-                            Championship.Caracteristiques.Add(new CaracteristicaModel { Tipus = tipus, Valor = valor });
+                            string tipus = caracteristicaNode.Attributes["tipus"].Value;
+                            string valor = caracteristicaNode.InnerText;
+                            cotxe.Caracteristiques.Add(new CaracteristicaModel { Tipus = tipus, Valor = valor });
                         }
 
-                        Campeonat.Add(Championship);
+                        BD.InsertarCotxe(cotxe);
                     }
-
-                    EnviarDades();
-
-                    return true;
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine("Error al cargar el modelo: " + ex.Message);
-                    return false;
-                }
+
+                return true;
             }
-
-            public static bool EnviarDades()
+            catch (Exception ex)
             {
-                return BD.EnviarDatosBDD(Campeonat);
+                Console.WriteLine("Error al cargar el modelo: " + ex.Message);
+                return false;
             }
         }
     }
+}
